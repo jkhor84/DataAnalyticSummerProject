@@ -1,0 +1,57 @@
+﻿Set up git on Linux
+1) Create git repository
+    • Login to https://github.com/ 
+    • Create new repository
+        ◦ Click on “New” button to create a new repository
+            ▪ Note: Click on the small icon on the top right side corner and click on your repositories
+    • Name your repository (e.g. DataAnalyticSummerProject), check “Add a README file” box and click on the “Create repository” button
+    • Go to the new created repository 
+    • Create a new development branch
+        ◦ Click on the “main” button and enter develop as branch name in the text box
+    • Get the repository link
+        ◦ Click on the “Code” button and copy the HTTPS link. Example: https://github.com/jkhor84/DataAnalyticSummerProject.git
+
+2) Get a personal access token
+    • Go to settings
+            ▪ Click on the small icon on the top right side corner and click on Settings
+    • Click on Developer settings
+    • Click on Personal access tokens
+    • Click on Generate new token and name the purpose of token on the Note section and select the expiration date for the token.
+    • In select scopes section, click the repo check box
+    • Click on the Generate token button.
+    • Copy the personal access token for later use. Example of personal access token: ghp_72yYeqtMabFMriyVPHRaZ2BtUVd9dhksh 
+      
+3) Create git repository in Linux
+    • Start a terminal
+    • Install git if not installed yet
+        ◦ sudo apt install git 
+    • Create a project directory 
+        ◦ mkdir project
+        ◦ cd project
+    • Clone the git repository from github
+        ◦ git clone https://github.com/jkhor84/DataAnalyticSummerProject.git
+    • Go to git project directory
+        ◦ cd DataAnalyticSummerProject/
+
+4) Configure username, email and password
+    • Configure email
+        ◦ git config --global user.email "you@example.com"
+            ▪ Example: git config –global user.email “jasperkhor@gmail.com”
+    • Configure username
+        ◦ git config --global user.name "Your Name"
+            ▪  Example: git config –global user.name “jkhor84”
+    • Store password automatically so that users would not need to type in their username and password every time they git push.
+        ◦ git config –global credential.helper store 
+
+5) Basic git commands
+    • Switch branch (e.g. develop branch)
+        ◦ git checkout develop 
+    • Add file to staging (e.g. file to add is README.md)
+        ◦ git add README.md
+    • Commit all files in staging
+        ◦ git commit -m “First check in”
+    • Push file to github repository
+        ◦ git push origin develop
+        ◦ Note: The user would need to enter username and password for the first time
+            ▪ Username is the username you created for github
+            ▪ Password is the personal access token you copied in step 2.
