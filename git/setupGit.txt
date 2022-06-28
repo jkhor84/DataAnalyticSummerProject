@@ -1,4 +1,4 @@
-﻿Set up git on Linux
+﻿Set up git on Linux (last updated: 27/06/2022)
 1) Create git repository
     • Login to https://github.com/ 
     • Create new repository
