@@ -16,17 +16,17 @@
         ◦ It will look similar to below once the code above, sudo ufw status, is executed
             ▪ Status: active
               To                                      Action          From
-              --                                        ------             ----
-              20/tcp                                ALLOW       Anywhere                  
-              21/tcp                                ALLOW       Anywhere                  
-              40000:50000/tcp               ALLOW       Anywhere                  
-              990/tcp                              ALLOW       Anywhere                  
-              OpenSSH                          ALLOW       Anywhere                  
-              20/tcp (v6)                        ALLOW       Anywhere (v6)             
-              21/tcp (v6)                        ALLOW       Anywhere (v6)             
-              40000:50000/tcp (v6)       ALLOW       Anywhere (v6)             
-              990/tcp (v6)                      ALLOW       Anywhere (v6)             
-              OpenSSH (v6)                  ALLOW       Anywhere (v6)
+              --                                      ------         ----
+              20/tcp                                  ALLOW          Anywhere                  
+              21/tcp                                  ALLOW          Anywhere                  
+              40000:50000/tcp                         ALLOW          Anywhere                  
+              990/tcp                                 ALLOW          Anywhere                  
+              OpenSSH                                 ALLOW          Anywhere                  
+              20/tcp (v6)                             ALLOW       Anywhere (v6)             
+              21/tcp (v6)                             ALLOW       Anywhere (v6)             
+              40000:50000/tcp (v6)                    ALLOW       Anywhere (v6)             
+              990/tcp (v6)                            ALLOW       Anywhere (v6)             
+              OpenSSH (v6)                            ALLOW       Anywhere (v6)
                   
 3) Create FTP User:
         ◦ sudo adduser ftpuser
