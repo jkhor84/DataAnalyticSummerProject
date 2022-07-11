@@ -1,0 +1,31 @@
+﻿Set up Linux
+1)  Download Ubuntu
+    • Go to https://ubuntu.com/download/desktop
+    • Download the latest version of Ubuntu
+
+2) Create bootable drive
+    • Prepare a pen drive that is at least 4GB and plug the USB to the computer
+    • For Window:
+        ◦ Go to https://rufus.ie/en/ and download the latest version of Rufus
+        ◦ Open the downloaded Rufus file and select No when asked “Do you want to allow Rufus to check for application updates online?”
+        ◦ Under Device section, select the USB that had been plugged to the computer
+        ◦ Under Boot selection section, click on Disk or ISO Image
+            ▪ Click on the Select button on the right
+            ▪ Select the .iso Ubuntu file that was downloaded on Step 1
+        ◦ Click Start
+          
+3) Boot up Ubuntu from USB
+    • Shut down computer and insert the bootable USB drive
+    • Press the key to access the boot menu while turning on the computer 
+        ◦ Note: Different computers have different boot keys. 
+        ◦ Example: Dell computer’s boot key is F12.
+    • Select the bootable USB drive from the boot menu
+
+4) Install Ubuntu
+    • Click on “Install Ubuntu”
+    • Choose keyboard layout
+    • Select “Normal Installation”, click on “Install third-party software for graphics and Wi-Fi hardware and additional media formats” and click continue
+    • Click on “Erase disk and install Ubuntu” and click on “Install Now”
+    • Select time zone
+    • Create user account and click on continue
+    • Click on “Restart Now”
