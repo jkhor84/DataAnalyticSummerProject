@@ -1,5 +1,6 @@
 # DataAnalyticSummerProject
 Summary
+
 This project is a data analytic project. This project consists of setting up a Linux host, FTP server, Hadoop file system, Spark, versioning control using Git and data analysis using R/Rstudio.
 
 Firstly, Linux (Ubuntu 22.04 LTS) was set up on a laptop. Once Linux was set up, an FTP server (VSFTPD) was installed to enable file transfers. Then, the Hadoop file system (version: Hadoop-3.3.3) was set up to store the large datasets. Moreover, Spark (version: Spark-3.3.0) was set up as it could process data much faster than the Hadoop file system.
