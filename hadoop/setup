@@ -1,0 +1,22 @@
+Install hadoop step by step in Linux
+(https://kontext.tech/article/448/install-hadoop-330-on-linux#google_vignette)
+1)  Install Java
+    • sudo apt update
+    • java -version
+    • sudo apt install default-jre
+      sudo apt install openjdk-11-jre-headless  
+      sudo apt install openjdk-8-jre-headless
+    • sudo apt-get install openjdk-8-jdk
+
+2) Hadoop binary
+Download latest Hadoop binary from (https://hadoop.apache.org/releases.html)
+    • wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.3/hadoop-3.3.3.tar.gz
+    • mkdir ~/hadoop
+    • tar -xvzf hadoop-3.3.3.tar.gz -C ~/hadoop
+    • cd ~/hadoop/hadoop-3.3.3/
+
+3) Configure ssh
+    • ssh localhost
+    • ssh-keygen -t rsa -P ‘’ -f ~/.ssh/id_rsa
+      cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+      chmod 0600 ~/.ssh/authorized_keys

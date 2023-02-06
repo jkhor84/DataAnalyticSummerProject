@@ -1,0 +1,107 @@
+﻿Set up FTP server
+1) Install VSFTPD Server
+    • Open Terminal
+    • sudo apt update
+    • sudo apt install vsftpd
+    • sudo service vsftpd status
+      
+2) Configure Firewall 
+    • sudo ufw allow 20/tcp
+    • sudo ufw allow 21/tcp
+    • sudo ufw allow 40000:50000/tcp
+    • sudo ufw allow 990/tcp
+    • sudo ufw allow openssh
+    • sudo ufw enable
+    • sudo ufw status
+        ◦ It will look similar to below once the code above, sudo ufw status, is executed
+            ▪ Status: active
+              To                                      Action          From
+              --                                      ------         ----
+              20/tcp                                  ALLOW          Anywhere                  
+              21/tcp                                  ALLOW          Anywhere                  
+              40000:50000/tcp                         ALLOW          Anywhere                  
+              990/tcp                                 ALLOW          Anywhere                  
+              OpenSSH                                 ALLOW          Anywhere                  
+              20/tcp (v6)                             ALLOW       Anywhere (v6)             
+              21/tcp (v6)                             ALLOW       Anywhere (v6)             
+              40000:50000/tcp (v6)                    ALLOW       Anywhere (v6)             
+              990/tcp (v6)                            ALLOW       Anywhere (v6)             
+              OpenSSH (v6)                            ALLOW       Anywhere (v6)
+                  
+3) Create FTP User:
+        ◦ sudo adduser ftpuser
+        ◦ sudo mkdir /home/ftpuser/ftp
+        ◦ sudo chown nobody:nogroup /home/ftpuser/ftp
+        ◦ sudo chmod a-w /home/ftpuser/ftp
+        ◦ sudo mkdir /home/ftpuser/ftp/files
+        ◦ sudo chown ftpuser:ftpuser /home/ftpuser/ftp/files
+          
+4)VSFTPD Server Configuration
+    • sudo nano /etc/vsftpd.conf
+        ◦ Include the following configuration to the /etc/vsftpd.conf file:
+            ▪ listen=NO
+              listen_ipv6=YES
+              anonymous_enable=NO
+              local_enable=YES
+              write_enable=YES
+              local_umask=022
+              dirmessage_enable=YES
+              use_localtime=YES
+              xferlog_enable=YES
+              connect_from_port_20=YES
+              chroot_local_user=YES
+              secure_chroot_dir=/var/run/vsftpd/empty
+              pam_service_name=vsftpd
+              force_dot_files=YES
+              pasv_min_port=40000
+              pasv_max_port=50000
+              
+              user_sub_token=$USER
+              local_root=/home/$USER/ftp
+              
+    • sudo systemctl restart vsftpd.service
+
+5) Obtain host for file transfer
+    • ifconfig
+        ◦ It will look similar to below once the code above, ifconfig, is executed
+            ▪ eno2: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+                      ether 98:e7:43:5c:d2:a5  txqueuelen 1000  (Ethernet)
+                      RX packets 0  bytes 0 (0.0 B)
+                      RX errors 0  dropped 0  overruns 0  frame 0
+                      TX packets 0  bytes 0 (0.0 B)
+                      TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+                      device interrupt 16  memory 0xcc300000-cc320000  
+              
+              lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+                      inet 127.0.0.1  netmask 255.0.0.0
+                      inet6 ::1  prefixlen 128  scopeid 0x10<host>
+                      loop  txqueuelen 1000  (Local Loopback)
+                      RX packets 1502366  bytes 228846874 (228.8 MB)
+                      RX errors 0  dropped 0  overruns 0  frame 0
+                      TX packets 1502366  bytes 228846874 (228.8 MB)
+                      TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+              
+              wlo1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+                      inet 192.168.12.176  netmask 255.255.255.0  broadcast 192.168.12.255
+                      inet6 2607:fb90:fa07:df53:b0be:810a:0:bd2  prefixlen 128  scopeid 0x0<global>
+                      inet6 fe80::64d9:ad61:18aa:39b4  prefixlen 64  scopeid 0x20<link>
+                      inet6 2607:fb90:fa07:df53:be3d:bd00:b4a5:9456  prefixlen 64  scopeid 0x0<global>
+                      inet6 2607:fb90:fa07:df53:8f52:16a4:5ca4:52b6  prefixlen 64  scopeid 0x0<global>
+                      inet6 2607:fb90:fa07:df53:723f:7240:27f2:bef1  prefixlen 64  scopeid 0x0<global>
+                      ether 50:e0:85:d6:c2:70  txqueuelen 1000  (Ethernet)
+                      RX packets 8854338  bytes 9599662664 (9.5 GB)
+                      RX errors 0  dropped 496  overruns 0  frame 0
+                      TX packets 1885517  bytes 392992495 (392.9 MB)
+                      TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+            ▪ The host on the example above is 192.168.12.176
+
+5) Install FileZilla 
+    • Go to https://filezilla-project.org/ and download FileZilla Client
+    • Open FileZilla Cilent
+    • Enter the host, username and password
+        ◦ Example:
+            ▪ Host: 192.168.12.176
+		Username: ftpuser
+		Password is the password that the user created for the username ftpuser.
+    • Begin transfer the desired file from local site to remote site.
+
